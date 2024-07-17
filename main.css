@@ -166,7 +166,7 @@ td.org-center {
 .visitor-grid {
     display: grid;
     justify-content: space-around;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     padding: 1em;
     grid-row-gap: 20px;
 
