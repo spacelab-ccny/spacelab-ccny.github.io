@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
         radius = Math.random() * 1.2;
         context.beginPath();
         context.arc(x, y, radius, 0, 360);
-        context.fillStyle = "hsla(232deg, 97%, 85%, 50%)";
+        context.fillStyle = "hsla(193deg, 43%, 67%, 50%)";
         context.fill();
     }
 }, false);
