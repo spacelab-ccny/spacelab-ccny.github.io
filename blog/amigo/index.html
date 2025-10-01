@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Amigo | Spacelab.</title>
+    <link rel="stylesheet" type="text/css" href="../../main.css" />
+    <link rel="icon" type="image/png" href="../../images/favicon.png" />
+</head>
+
+<script src="../../stars.js"></script>
+
+<body>
+    <canvas id="starfield" width="750" height="500"></canvas>
+    <div id="content">
+        <header>
+            <nav>
+                <ul>
+                    <li class="menubar-leftalign">
+                        <a href="../../">Home</a>
+                    <li class="menubar-rightalign">
+                        <a href="../../seminars">Seminars</a>
+                    </li>
+                    <li class="menubar-rightalign">
+                        <a href="../../teaching">Teaching</a>
+                    </li>
+                    <li class="menubar-rightalign">
+                        <a href="../../research">Research</a>
+                    </li>
+                    <li class="menubar-rightalign">
+                        <a href="../../people">People</a>
+                    </li>
+                    <li class="menubar-rightalign">
+                        <a href="../../blog">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <br>
+        <h1>Amigo &#129309;</h1>
+        <h2>Secure Group Mesh Messaging in Realistic Protest Scenarios</h2>
+        <br>
+        <p class=abstract>
+            This was a project by <a href="https://davidiny.github.io">David Inyangson*</a>, <a href="https://sites.harvard.edu/sarah-radway/">Sarah Radway*</a>, <a href="https://tjo.is">Tushar Jois</a>, <a href="https://www.ccny.cuny.edu/profiles/nelly-fazio?srsltid=AfmBOooUpAWn_eAle5ykP-lML5-kPL7-JhPo863nEdJChud-w2jxHiHF">Nelly Fazio</a>, and <a href="https://mickens.seas.harvard.edu/">James Mickens</a>.
+        </p>
+
+        <p> Our paper is a part of the <a href="https://doi.org/10.1145/3719027.3765133">proceedings</a> of the 2025 ACM SIGSAC Conference on Computer and Communications Security (CCS '25).
+            You can find the full version of the paper on <a href="https://eprint.iacr.org/2024/1872">eprint</a>.    
+        </p>
+
+        <p> If you would like to run our experiments and explore the codebase yourself, you can also find our benchmarking code and
+            simulations on <a href="https://github.com/spacelab-ccny/amigo">Github</a>.  We included detailed instructions and self-contained Docker environments.   
+        </p>
+        <i><h5> *Both authors contributed equally to the work.</h5></i>
+        <hr>
+        <img src="../../images/amigo/NovemberShutdown.png" class="blog-image">
+        <p> Protests are an important tool in the fight against authoritarian governments.  Through protests, ordinary citizens
+            can voice their opinions and bring visibility to their concerns.  Often times both the success of a protest and the safety
+            of those involved is heavily influenced by <a href="https://www.newstatesman.com/politics/2019/08/be-water-seven-tactics-that-are-winning-hong-kongs-democracy-revolution-2">on-the-ground communication</a>.  
+            Using tools like <a href="https://www.whatsapp.com/">WhatsApp</a>, <a href="https://telegram.org/">Telegram</a>, and <a href="https://signal.org/">Signal</a>, protesters can
+            collectively decide where and when to hold demonstrations, and how to respond to real-time events, like the arrival of police.  This communication is especially
+            important in the <i>large-scale</i> protest settings we consider where hundreds or thousands of people may be participating in densely crowded areas.
+            Because of the importance of communication, authoritarian regimes are <a href="https://www.cnn.com/2019/06/13/tech/telegram-ddos-attack-hong-kong-china">highly motivated</a> to intercept and/or disrupt communication channels during protests.
+        </p>
+        <h2>Censorship Tactics</h2>
+        <p> If an authoritarian regime wants to stifle activism, one obvious way is to shut down demonstrations before they happen.  This may
+            require eavesdropping on communication between protesters.  One way this can be achieved is through <a href="https://sls.eff.org/technologies/cell-site-simulators-imsi-catchers">cell-site simulators</a>; tools that emulate
+            cell towers and enable downgrade attacks that force connected phones to use unsafe, unencrypted communication protocols. 
+        </p>
+        <p> Another strategy is for an authoritarian regime to force an Internet shutdown.  Internet shutdowns are periods of degraded
+            or completely restricted access to content on the Internet.  In these situations, protesters can no longer use applications like
+            Signal and WhatsApp, since they rely on Internet connectivity.  While an intentional Internet shutdown may seem extreme, as of 2023
+            there were a reported total of <a href="https://www.accessnow.org/wp-content/uploads/2024/05/2023-KIO-Report.pdf">283 shutdowns across the globe</a>.  Aside from full Internet shutdowns, authoritarian
+            regimes have also been known to conduct targeted Denial-of-Service attacks against popular communication infrastructure.
+        </p>
+        <img src="../../images/amigo/TelegramDoS.jpg" class="blog-image" style="border-radius: 20px;">
+
+        <h2>Amigo: Mesh Messaging For the Protest Setting</h2>
+        <p>
+        Since protesters cannot rely on Internet-based messaging during Internet shutdowns, mesh-based communication
+        is a viable option.  In a mesh network, communication is done in a peer-to-peer nature; individuals directly communicate
+        with eachother using the Wi-Fi or Bluetooth capabilities of their phone. In fact, this idea isn't new. If you've ever used Airdrop, you've participated in peer-to-peer
+        communication over Bluetooth Low Energy! There are various applications, like <a href="https://bridgefy.me/">Bridgefy</a> and <a href="https://briarproject.org/">Briar</a>, that 
+        are designed for peer-to-peer communication. The problem, however, is that requirements for mesh-based communication tools for the general use
+        setting do not align with the requirements for the large-scale Internet shutdown protest setting.
+        </p>
+        <img src="../../images/amigo/Mesh.png" class="blog-image">
+        <p>Based on a study by Albrecht et al. a suitable communication tool for protesters during Internet shutdowns needs to informed by the following:</p>
+        <ol>
+            <li>Protest communication occurs primarily in group chats.</li>
+            <li>Groups must be able to securely add members as a protest unfolds.</li>
+            <li>Groups must be able to remove members.</li>
+            <li>Communications should be possible during an Internet shutdown.</li>
+            <li>Communication should be anonymous.</li>
+        </ol>
+
+        <p> While prior research works and tools like Briar and Bridgefy exist, they do not adequately address the above requirements.
+            Unfortunately, this means in real-life scenarios protesters are resigned to using tools that put their safety at risk.  As an example, consider the <a href="https://www.hrw.org/blog-feed/hong-kong-protests">widespread 2019–2020 protests</a> 
+            in Hong Kong. The protests erupted in response to the government’s attempt to pass the Extradition Law
+            Amendment Bill (ELAB). The bill would have allowed Hong Kong citizens to be extradited to China; 
+            many Hong Kong citizens feared that the bill would further erode Hong Kong’s legal independence from China.  This protest was marked
+            by partial Internet blackouts, during which many protesters attempted to use Bridgefy.  Bridgefy has been shown to not only fail to provide
+            anonymity, but also message confidentiality.  In addition, protesters reported that the tool simply was not able to handle
+            the network load induced by the large number of protesters.
+        </p>
+
+        <p> In short, protesters require a tool that is designed specifically for the protest setting. A tool that safeguards the <i>confidentiality</i> of messages,
+            and the <i>anonymity</i> of participants.  A tool that is oriented towards <i>group communication</i> and can be relied upon in large-scale protest environments
+            that are marked by densely-packed people and <i>protest-specific movement patterns</i> that give rise to <i>challenging network environments</i>.  Communication needs to happen even when the Internet is unavailable.  
+            We designed our tool, <b>Amigo</b>, with these goals in mind.
+        </p>
+
+        <h2>Designing the Right Tool</h2>
+        <p>
+            Now that we have the proper background, let's get into the specifics of Amigo's design.  We can break the 
+            Amigo tool into individual layers, each layer playing a key role in providing protesters with secure and effective
+            ways of communicating.  The system design figure below has a lot of information, so we provide a brief summary of each layer.
+        </p>
+        <img src="../../images/amigo/SysDesign.png" class="blog-image">
+        <h3>Application Layer</h3>
+        <p> At the application layer, users can take direct actions like creating groups, adding group members, and sending messages.
+            These actions map to capabilities that a user would interact with when directly using the application's interface.
+            Behind the scenes these actions, like sending messages, are protected by keys negotiated at the session layer
+        </p>
+        <h3>Session Layer</h3>
+        <p> At the session layer, Amigo implements an efficient Continuous Group Key Agreement protocol, or CGKA for short.  We'll get introduce
+            the specifics of this CGKA later, but at a high level it enables a way for group members to mutually derive key material used to keep their communication confidential.
+        </p>
+        <h3>Routing Layer</h3>
+        <p> The session layer sends and receives user-generated messages and CGKA-generated
+            messages via the routing layer. Amigo is compatible with traditional flooding approaches, but we notably propose
+            a novel <i>dynamic clique routing</i> approach tailored for the protest scenarios we consider.  We'll get intro
+            the specifics of this protocol as well.
+        </p>
+        <h3>Link Layer</h3>
+        <p>At the bottom of the Amigo stack is the link layer. Amigo can utilize technologies like Wi-Fi and BLE for peer-to-peer communication.</p>
+
+        <h2>Secure and Anonymous Group Messaging</h2>
+        <p>
+            Protesters require secure and anonymous group communication.  This means that (1) their communication should remain
+            <i>confidential</i> to group outsiders and (2) their communication should remain <i>anonymous to group outsiders</i>.  One way that
+            communication tools provide the former property is through end-to-end encryption.  Tools like Signal allow two users to
+            establish a pairwise key - a single key that both users utilize to encrypt their messages.
+        </p>
+
+        <p>
+            While this is fine when communicating between pairs of individuals, it quickly becomes inefficient when operating in group communication settings.
+            Sending a single message to a group of individuals using a pairwise approach means sending the same message encrypted under each key that you
+            share with each individual.  This inefficiency is the primary motivation for continuous group key agreement protocols; these protocols allow groups
+            to efficiently derive and rotate a shared key.  Effiency is realized through a <i>ratchet tree</i>, a data structure that organizes group
+            members and key material in a binary tree.  In a ratchet tree, group members occupy leaf node positions, while intermedate nodes along with the root
+            are associated solely with key material.  
+            Below is what a group's ratchet tree with one initial member might look like for Amigo's CGKA.
+        </p>
+        <img src="../../images/amigo/NewGroup.png" class="blog-image">
+
+        <p>
+            Now here is what Amigo's CGKA might look like with two individuals, after a member is added and is occupying
+            <i>Node<sub>1</sub></i>.  Without diving into the weeds, <i>Gen()</i> is used to derive updating key material given a seed, <i>&Delta;</i>.
+            <i>Node<sub>1</sub></i> generates updating key material and uses the ⭐ operator to apply this new cryptographic state on the old.  This star operator is what makes Amigo uniquely suited to the Internet-shutdown protest setting.
+        </p>
+        <!-- <p> Now let's get into the details by exploring a concrete example, adding members.  In Amigo's CGKA, adding members is as simple as placing a joining member in a leaf node within the tree, and having that newly joined member update the appropriate key material.
+            This member then sends information on how to update the keys to the rest of the group, so everyone can have a consistent view of the group's ratchet tree. Let us consider the below figure.  A new member, is invited
+            to the group and occupies the leaf position of <i>Node<sub>1</sub></i>.  <i>Node<sub>1</sub></i> runs <i>Gen(&Delta;)</i> where <i>Gen()</i> is the generation algorithmn for our public key scheme and <i>&Delta;</i> is a random seed.  This key generation is done for
+            every node along the path of <i>Node<sub>1</sub></i> up to and including the root.  The newly generated keys are used by <i>Node<sub>1</sub></i> to update key material using the ⭐ operator (we'll go into that shortly).  The seeds used to generate the updating material are then encrypted by <i>Node<sub>1</sub></i> under their associated node's prior public key (since only a node's descendants should have that node's secret key) and 
+            sent to the rest of the group.  Group members will decrypt the seeds intended for them, deriving secret keys they can use to update their own state.  <i>Node<sub>1</sub></i> also broadcasts the public keys they applied during their update since those are needed by everyone.
+        </p> -->
+        <img src="../../images/amigo/AddMember.png" class="blog-image">
+
+        <p>
+             While other CGKAs like MLS, TreeKEM, and ART are out there, they are primarily designed with a centralized infrastructure in mind, 
+            leveraging online servers to aid in the group key agreement process.  These protocols require that changes to state held in the ratchet tree <i>(protocol messages)</i> be applied in the same order by everyone - a consistent global ordering.
+            This ordering is easy to achieve with the help of a centralized server, but nontrivial during an Internet-shutdown and over a mesh where messages may arrive in any order.
+        </p>
+        </p>
+            Amigo allows for a consistent ratchet tree state by leveraging the direction of Causal TreeKEM; instead of ratchet tree updates that <i>overwrite</i> state, we <i>combine</i> 
+            previous and existing state.  In this way, we embrace the inconsistencies of the mesh network by enabling updates to be applied in any order.  As long as a group member recieves
+            every state update, Amigo's CGKA will converge with eventual consistency and group members will derive consistent key material. <b>So, members can apply protocol
+            messages regardless of the order. </b>We denote this combination operator using ⭐. 
+        </p>
+
+        <p>
+            Because we are working with elliptic curve cryptography, its relatively simple to combine key material.  When working with
+            elliptic curves, a public key <i>pk</i> is derived by multiplying a (secret) scalar <i>sk</i> with the curve's generator point <i>P</i>.
+            Thus we can instantiate ⭐ as <i>sk<sub>x⭐y</sub> = sk<sub>x</sub> + sk<sub>y</sub>, pk<sub>x⭐y</sub> = (sk<sub>x</sub> + sk<sub>y</sub>) * P</i>
+        </p>
+        <p>
+            Aside from enabling state synchronization within a mesh, Amigo provides end-to-end confidentiality by encrypting all messages sent within groups using keys contained within the ratchet tree.  The keys used for a particular message correspond to 
+            the set of members who are the intended recipients.  Via AES-GCM, encrypted messages are also authenticated.  Amigo provides anonymity by not including any identifying
+            metadata with messages.  This means that clients utilize <i>trial decryption</i>; they attempt to decrypt every message they recieve in order to determine if it is 
+            intended for them or not.
+        </p>
+
+        <h2>Efficient and Effective Routing</h2>
+        <p>
+            So now that we have end-to-end encrypted, anonymous, and authenticated messaging, we need a ways
+            to disseminate these messages.  Within a protest area group members may be close together; in these scenarios
+            directly exchanging a message via Wi-Fi or BLE is a viable approach.  In the cases, however, where group members
+            are farther apart messages need to be propogated through the mesh until they are recieved by their intended recipient.
+        </p>
+        <img src="../../images/amigo/RoutingProtocolsFlood.png" class="blog-image">
+        <p>
+            One common way of message propogation is via <i>epidemic flooding</i>.  Simply put, an individual
+            sends a message to everyone within vicinity.  Recipients do the same with this message.  Every message has a time-to-live (TTL), i.e., a 
+            maximum number of hops decremented each time it is propogated.  The idea is that once the TTL has reached zero, the 
+            message should have been recieved by the intended recipient. <i>Digest flooding</i> is similar, but with optimizations that
+            attempt to limit the total number of messages network participants have to propogate.
+        </p>
+
+        <p>
+            While flooding-based protocols often achieve high delivery rates, they are notorious for consuming a lot of bandwidth.  
+            Bandwidth is precious within a mesh network, particularly in large-scale densely populated protest environments
+            where congested network environments can lead to dropped messages and ineffective communication.  
+        </p>
+
+        <p>
+            Clique-based routing provides a promising solution to the congestion problem.  Instead of everyone propogating messages,
+            a clique leader (a client within a limited geographic area) recieves messages from nearby protesters and propogates those 
+            messages to other clique leaders.  Clique leaders also disseminate messages to those in their clique.  In <i>static clique</i> routing,
+            clique leaders and their respective followers never change.  In reality, however, protesters move about and Amigo therefore
+            proposes and implements <i>Dynamic Clique Routing</i>. 
+        </p>
+        <img src="../../images/amigo/RoutingProtocolsClique.png" class="blog-image">
+        <p>
+            In Dynamic Clique Routing, there are election periods where clients within proximity of each other form a clique and elect a clique leader.
+            These clique leaders then propogate and disseminate messages for their respective clique followers.  Amigo’s leader elections 
+            are based on <a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pConfig">Android’s implementation</a> where nodes choose a "willingness" value (0-100), indicating their readiness to serve as a clique leader. 
+            The node in each given region with the highest “willingness" value is elected as leader.
+        </p>
+
+        <p>
+            Our new dynamic clique routing protocol achieves up to 95% or higher
+            delivery rates while sending far fewer messages then flooding-based protocols
+            over the course of our simulations. This differences ranges from ∼2× to ∼50×.
+            In other words, our simulations show that dynamic clique routing can achieve 
+            similar levels of message delivery at a fraction of the messages sent – 
+            important for smartphones, which are constrained by battery size and CPU capability, 
+            as well as for overall network stability.
+        </p>
+
+        <h2>Realistically Evaluating Amigo</h2>
+        <p>
+            Amigo is designed for large-scale protest settings, and protesters often move in 
+            <a href="https://www.newstatesman.com/politics/2019/08/be-water-seven-tactics-that-are-winning-hong-kongs-democracy-revolution-2">planned and organized ways.</a>
+            To accurately capture the effectiveness of our both our CGKA
+            and routing layers, we needed to realistically simulate real protest conditions.
+            We needed to evaluate how well Amigo handled these conditions through metrics like end-to-end delivery rates.
+            Through news articles, videos, photos, and <a href="https://docs.google.com/document/d/1UROUN37_gUqrDd4FYDFYXQAmYuXtsBAfaDLo47Im-Kk/edit?tab=t.0#heading=h.9n9f9eiq3xhs">protest guides</a> 
+            we were able to identify common mobility patterns. 
+            <ol>
+                <li>
+                    <b>Marches:</b> A march involves a group walking together in the same direction. 
+                </li>
+                <li>
+                    <b>Human Chains:</b> A human chain entails a line of stationary people who pass materials
+                    from one end of the line to the other.
+                </li>
+                <li>
+                    <b>Gatherings:</b> In the Hong Kong protest guide, the authors state that protests can also
+                    take the form of “gatherings with a specific focus.” Examples of such gatherings are
+                    musical performances and communal art projects.
+                </li>
+                <li>
+                    <b>Blockades:</b> A blockade occurs when protesters prevent entrance to a given space, e.g.,
+                    anti-ELAB protesters blockaded the Cross-Harbor Tunnel to stop police from entering a university
+                </li>
+            </ol>
+        </p>
+
+        <img src="../../images/amigo/Mobility.png" class="blog-image">
+
+
+        <p>
+            Using NS3, a discrete event simulator, we were able to transform these patterns into mobility models we
+            could use to test the end-to-end delivery rates of chat and CGKA protocol messages in the presence of realistic
+            movement patterns.  This enabled us to discover compelling takeaways and areas for future work that prior
+            research in this space failed to identify due to lower-fidelity simulations.
+        </p>
+
+        <h2>Takeaways and Future Work</h2>
+
+        <h2>TL;DR</h2>
+    </div>
+</body>
+
+</html>

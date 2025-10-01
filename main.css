@@ -180,6 +180,14 @@ td.org-center {
     padding: 5px;
 }
 
+.blog-image {
+    display: block;          /* Makes the image a block element */
+    margin-left: auto;       /* Centers horizontally */
+    margin-right: auto;      /* Centers horizontally */
+    max-width: 100%;         /* Responsive: scales down on small screens */
+    height: auto;            /* Maintains aspect ratio */
+}
+
 @media only screen and (max-width: 600px) {
     .people-grid {
         display: grid;
