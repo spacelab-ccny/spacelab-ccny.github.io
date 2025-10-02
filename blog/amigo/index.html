@@ -279,8 +279,54 @@
         </p>
 
         <h2>Takeaways and Future Work</h2>
+        <p>
+            Benchmarks of the Amigo CGKA showed the efficiency we desired.  Running on a low-end budget smartphone,
+            a protester would be able to process roughly 39 member removals, 62 key refreshes, or 7 member additions in one minute for a group size of 200 members.
+            In a similar vein, our power consumption benchmarks showed that Amigo's CGKA would not unduly drain a phone's battery.
+        </p>
+        <p>
+            When it came to end-to-end delivery rates for our novel Dynamic Clique routing protocol, our high-fidelity simulations showed that Amigo 
+            achieves 95% or higher rates on multiple mobility models while sending far fewer messages than traditional flooding approaches.
+        </p>
+
+        <p>
+            The table below depicts how different routing protocols fared under different mobility models showing the total message packets during the duration of our simulation.  The green check indicates whether or not a consistent
+            cryptographic group state was achieved by the end of the simulation.  The values within parentheses are message delivery rates. It is interesting to note that in certain mobility models, <i>none</i> of the 
+            protocols fared very well. Additionally, in many of the mobility models, traditional flooding <i>did not</i> fare as well as we expected.  This was surprising and leads us to an important takeaway.
+        </p>
+        <img src="../../images/amigo/DeliveryRates.png" class="blog-image">
+        <p>
+            Future work in this space needs to more adequately consider the complexities of mesh networking.  Prior work, and we too at the beginning of this journey,
+            assumed that the majority of the work was in the cryptography.  However, the cryptography is only as effective as the underlying mesh that supports it.
+            <b>The reliability of the network impacts the reliability of key management.</b> Lower layer complexities like network collisions, exacerbated by densely-packed
+            environments, and complex mobility patterns can lead to network conditions that make building secure communication tools over a mesh non-trival.  There is still 
+            a lot of work to be done in designing mesh routing algorithmns that can be effective in large-scale Internet shutdown settings: designing tooling that can support large-scale realistic simulations,
+            algorithms that adjust to network congestion, and protocols that are robust to movement patterns.
+        </p>
 
         <h2>TL;DR</h2>
+        <p>
+            To keep it short and sweet:
+            <ol>
+                <li>
+                    Protesters living under authoritarian regimes require secure ways of communicating within groups
+                    during Internet Shutdowns.
+                </li>
+                <li>
+                    Amigo combines a novel continous group key agreement protocol and a novel Dynamic Clique routing protocol
+                    to enable secure group communication over a mesh network
+                </li>
+                <li>
+                    Our simulations and benchmarks show that while Amigo contributes a positive step forward in this space,
+                    more work needs to be done to solve the complexities of secure mesh communication in large-scale protest scenarios.
+                </li>
+            </ol>
+        </p>
+        <p> Our paper is a part of the <a href="https://doi.org/10.1145/3719027.3765133">proceedings</a> of the 2025 ACM SIGSAC Conference on Computer and Communications Security (CCS '25).
+            You can find the full version of the paper on <a href="https://eprint.iacr.org/2024/1872">eprint</a>.    
+            If you would like to run our experiments and explore the codebase yourself, you can also find our benchmarking code and
+            simulations on <a href="https://github.com/spacelab-ccny/amigo">Github</a>.  We included detailed instructions and self-contained Docker environments.   
+        </p>
     </div>
 </body>
 
