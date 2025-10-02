@@ -66,7 +66,7 @@
         <h2>Censorship Tactics</h2>
         <p> If an authoritarian regime wants to stifle activism, one obvious way is to shut down demonstrations before they happen.  This may
             require eavesdropping on communication between protesters.  One way this can be achieved is through <a href="https://sls.eff.org/technologies/cell-site-simulators-imsi-catchers">cell-site simulators</a>; tools that emulate
-            cell towers and enable downgrade attacks that force connected phones to use unsafe, unencrypted communication protocols. 
+            cell towers and enable downgrade attacks that force connected phones to use unsafe or unencrypted communication protocols. 
         </p>
         <p> Another strategy is for an authoritarian regime to force an Internet shutdown.  Internet shutdowns are periods of degraded
             or completely restricted access to content on the Internet.  In these situations, protesters can no longer use applications like
@@ -80,7 +80,7 @@
         <p>
         Since protesters cannot rely on Internet-based messaging during Internet shutdowns, mesh-based communication
         is a viable option.  In a mesh network, communication is done in a peer-to-peer nature; individuals directly communicate
-        with eachother using the Wi-Fi or Bluetooth capabilities of their phone. In fact, this idea isn't new. If you've ever used Airdrop, you've participated in peer-to-peer
+        with each other using the Wi-Fi or Bluetooth capabilities of their phone. In fact, this idea isn't new. If you've ever used Airdrop, you've participated in peer-to-peer
         communication over Bluetooth Low Energy! There are various applications, like <a href="https://bridgefy.me/">Bridgefy</a> and <a href="https://briarproject.org/">Briar</a>, that 
         are designed for peer-to-peer communication. The problem, however, is that requirements for mesh-based communication tools for the general use
         setting do not align with the requirements for the large-scale Internet shutdown protest setting.
@@ -156,9 +156,9 @@
         <img src="../../images/amigo/NewGroup.png" class="blog-image">
 
         <p>
-            Now here is what Amigo's CGKA might look like with two individuals, after a member is added and is occupying
+            Below is what Amigo's CGKA might look like with two individuals, after a member is added and is occupying
             <i>Node<sub>1</sub></i>.  Without diving into the weeds, <i>Gen()</i> is used to derive updating key material given a seed, <i>&Delta;</i>.
-            <i>Node<sub>1</sub></i> generates updating key material and uses the ⭐ operator to apply this new cryptographic state on the old.  This star operator is what makes Amigo uniquely suited to the Internet-shutdown protest setting.
+            <i>Node<sub>1</sub></i>, after they join the group, generates updating key material and uses the ⭐ operator to apply this new cryptographic state on the old.  This star operator is what makes Amigo uniquely suited to the Internet-shutdown protest setting.
         </p>
         <!-- <p> Now let's get into the details by exploring a concrete example, adding members.  In Amigo's CGKA, adding members is as simple as placing a joining member in a leaf node within the tree, and having that newly joined member update the appropriate key material.
             This member then sends information on how to update the keys to the rest of the group, so everyone can have a consistent view of the group's ratchet tree. Let us consider the below figure.  A new member, is invited
@@ -175,7 +175,7 @@
         </p>
         </p>
             Amigo allows for a consistent ratchet tree state by leveraging the direction of Causal TreeKEM; instead of ratchet tree updates that <i>overwrite</i> state, we <i>combine</i> 
-            previous and existing state.  In this way, we embrace the inconsistencies of the mesh network by enabling updates to be applied in any order.  As long as a group member recieves
+            previous and existing state.  In this way, we embrace the inconsistencies of the mesh network by enabling updates to be applied in any order.  As long as group members recieves
             every state update, Amigo's CGKA will converge with eventual consistency and group members will derive consistent key material. <b>So, members can apply protocol
             messages regardless of the order. </b>We denote this combination operator using ⭐. 
         </p>
@@ -189,7 +189,7 @@
             Aside from enabling state synchronization within a mesh, Amigo provides end-to-end confidentiality by encrypting all messages sent within groups using keys contained within the ratchet tree.  The keys used for a particular message correspond to 
             the set of members who are the intended recipients.  Via AES-GCM, encrypted messages are also authenticated.  Amigo provides anonymity by not including any identifying
             metadata with messages.  This means that clients utilize <i>trial decryption</i>; they attempt to decrypt every message they recieve in order to determine if it is 
-            intended for them or not.
+            intended for them or not.  Last, but not least, Amigo provides <a href="https://signal.org/blog/asynchronous-security/">forward secrecy</a> and <a href="https://signal.org/docs/specifications/doubleratchet/#symmetric-key-ratchet">post-compromise security.</a>
         </p>
 
         <h2>Efficient and Effective Routing</h2>
@@ -203,7 +203,7 @@
         <p>
             One common way of message propogation is via <i>epidemic flooding</i>.  Simply put, an individual
             sends a message to everyone within vicinity.  Recipients do the same with this message.  Every message has a time-to-live (TTL), i.e., a 
-            maximum number of hops decremented each time it is propogated.  The idea is that once the TTL has reached zero, the 
+            maximum number of hops decremented each time the message is propogated.  The idea is that once the TTL has reached zero, the 
             message should have been recieved by the intended recipient. <i>Digest flooding</i> is similar, but with optimizations that
             attempt to limit the total number of messages network participants have to propogate.
         </p>
@@ -219,20 +219,20 @@
             a clique leader (a client within a limited geographic area) recieves messages from nearby protesters and propogates those 
             messages to other clique leaders.  Clique leaders also disseminate messages to those in their clique.  In <i>static clique</i> routing,
             clique leaders and their respective followers never change.  In reality, however, protesters move about and Amigo therefore
-            proposes and implements <i>Dynamic Clique Routing</i>. 
+            proposes and implements a <i> novel Dynamic Clique routing protocol.</i> 
         </p>
         <img src="../../images/amigo/RoutingProtocolsClique.png" class="blog-image">
         <p>
-            In Dynamic Clique Routing, there are election periods where clients within proximity of each other form a clique and elect a clique leader.
-            These clique leaders then propogate and disseminate messages for their respective clique followers.  Amigo’s leader elections 
+            In our Dynamic Clique routing protocol, there are election periods where clients within proximity of each other form a clique and elect a clique leader.
+            These clique leaders then propogate and disseminate messages for their respective clique followers for a specified time period until new cliques are formed.  Amigo’s leader elections 
             are based on <a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pConfig">Android’s implementation</a> where nodes choose a "willingness" value (0-100), indicating their readiness to serve as a clique leader. 
             The node in each given region with the highest “willingness" value is elected as leader.
         </p>
 
         <p>
-            Our new dynamic clique routing protocol achieves up to 95% or higher
+            Our new Dynamic Clique routing protocol achieves up to 95% or higher
             delivery rates while sending far fewer messages then flooding-based protocols
-            over the course of our simulations. This differences ranges from ∼2× to ∼50×.
+            over the course of our simulations. This difference ranges from ∼2× to ∼50×.
             In other words, our simulations show that dynamic clique routing can achieve 
             similar levels of message delivery at a fraction of the messages sent – 
             important for smartphones, which are constrained by battery size and CPU capability, 
@@ -247,7 +247,7 @@
             and routing layers, we needed to realistically simulate real protest conditions.
             We needed to evaluate how well Amigo handled these conditions through metrics like end-to-end delivery rates.
             Through news articles, videos, photos, and <a href="https://docs.google.com/document/d/1UROUN37_gUqrDd4FYDFYXQAmYuXtsBAfaDLo47Im-Kk/edit?tab=t.0#heading=h.9n9f9eiq3xhs">protest guides</a> 
-            we were able to identify common mobility patterns. 
+            we were able to identify common protester mobility patterns. 
             <ol>
                 <li>
                     <b>Marches:</b> A march involves a group walking together in the same direction. 
@@ -272,7 +272,7 @@
 
 
         <p>
-            Using NS3, a discrete event simulator, we were able to transform these patterns into mobility models we
+            Using <a href="https://www.nsnam.org/">NS3, a discrete event simulator,</a> we were able to transform these patterns into mobility models we
             could use to test the end-to-end delivery rates of chat and CGKA protocol messages in the presence of realistic
             movement patterns.  This enabled us to discover compelling takeaways and areas for future work that prior
             research in this space failed to identify due to lower-fidelity simulations.
@@ -290,7 +290,7 @@
         </p>
 
         <p>
-            The table below depicts how different routing protocols fared under different mobility models showing the total message packets during the duration of our simulation.  The green check indicates whether or not a consistent
+            The table below depicts how different routing protocols fared under different mobility models. This table shows the total message packets send under each message propogation strategy during the duration of our simulation.  The green check indicates whether or not a consistent
             cryptographic group state was achieved by the end of the simulation.  The values within parentheses are message delivery rates. It is interesting to note that in certain mobility models, <i>none</i> of the 
             protocols fared very well. Additionally, in many of the mobility models, traditional flooding <i>did not</i> fare as well as we expected.  This was surprising and leads us to an important takeaway.
         </p>
@@ -314,7 +314,7 @@
                 </li>
                 <li>
                     Amigo combines a novel continous group key agreement protocol and a novel Dynamic Clique routing protocol
-                    to enable secure group communication over a mesh network
+                    to enable secure group communication over a mesh network.
                 </li>
                 <li>
                     Our simulations and benchmarks show that while Amigo contributes a positive step forward in this space,
