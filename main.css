@@ -184,7 +184,7 @@ td.org-center {
     display: block;          /* Makes the image a block element */
     margin-left: auto;       /* Centers horizontally */
     margin-right: auto;      /* Centers horizontally */
-    max-width: 100%;         /* Responsive: scales down on small screens */
+    max-width: 70%;         /* Responsive: scales down on small screens */
     height: auto;            /* Maintains aspect ratio */
 }
 
