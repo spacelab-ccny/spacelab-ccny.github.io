@@ -188,6 +188,14 @@ td.org-center {
     height: auto;            /* Maintains aspect ratio */
 }
 
+.header-photo {
+    display: block;          /* Makes the image a block element */
+    margin-left: 0;       /* Centers horizontally */
+    margin-right: auto;      /* Centers horizontally */
+    max-width: 40%;         /* Responsive: scales down on small screens */
+    height: auto;            /* Maintains aspect ratio */
+}
+
 @media only screen and (max-width: 600px) {
     .people-grid {
         display: grid;
