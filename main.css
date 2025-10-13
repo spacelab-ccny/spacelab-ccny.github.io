@@ -29,6 +29,13 @@ h3 {
     margin-bottom: 0em;
 }
 
+.bloghead h1,
+h2 {
+    letter-spacing: -0.02em;
+    margin: 0em;
+}
+
+
 body,
 nav {
     letter-spacing: -0.02em;
@@ -181,19 +188,29 @@ td.org-center {
 }
 
 .blog-image {
-    display: block;          /* Makes the image a block element */
-    margin-left: auto;       /* Centers horizontally */
-    margin-right: auto;      /* Centers horizontally */
-    max-width: 70%;         /* Responsive: scales down on small screens */
-    height: auto;            /* Maintains aspect ratio */
+    display: block;
+    /* Makes the image a block element */
+    margin-left: auto;
+    /* Centers horizontally */
+    margin-right: auto;
+    /* Centers horizontally */
+    max-width: 70%;
+    /* Responsive: scales down on small screens */
+    height: auto;
+    /* Maintains aspect ratio */
 }
 
 .header-photo {
-    display: block;          /* Makes the image a block element */
-    margin-left: 5px;       /* Centers horizontally */
-    margin-right: auto;      /* Centers horizontally */
-    max-width: 50%;         /* Responsive: scales down on small screens */
-    height: auto;            /* Maintains aspect ratio */
+    display: block;
+    /* Makes the image a block element */
+    margin-left: 5px;
+    /* Centers horizontally */
+    margin-right: auto;
+    /* Centers horizontally */
+    max-width: 50%;
+    /* Responsive: scales down on small screens */
+    height: auto;
+    /* Maintains aspect ratio */
     float: right;
 }
 
