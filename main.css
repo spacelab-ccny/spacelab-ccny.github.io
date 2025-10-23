@@ -29,12 +29,10 @@ h3 {
     margin-bottom: 0em;
 }
 
-.bloghead h1,
-h2 {
+.bloghead {
     letter-spacing: -0.02em;
     margin: 0em;
 }
-
 
 body,
 nav {
@@ -76,11 +74,22 @@ nav {
     font-size: 90%;
 }
 
+a.spacelab {
+    color: #ECEFF4;
+    font-weight: bold;
+    font-size: 24px;
+}
+
 nav ul,
 nav ol {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+nav li {
+    height: 30px;
+    line-height: 30px;
 }
 
 a {
