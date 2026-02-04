@@ -149,6 +149,27 @@ td.org-center {
     height: 150px
 }
 
+.logo-tight {
+    float: right;
+    display: block;
+    margin: 0px;
+    object-fit: cover;
+    width: auto;
+    height: 125px
+}
+
+.banner {
+    display: block;
+    margin: auto;
+    object-fit: cover;
+    max-width: 50%;
+}
+
+.amigo {
+    color: #8FBCBB;
+}
+
+
 .whoami {
     float: top;
     display: block;
