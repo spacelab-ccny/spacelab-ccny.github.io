@@ -180,6 +180,16 @@ td.org-center {
     height: 130px;
 }
 
+.alumphoto {
+    float: top;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+
 .people {
     vertical-align: middle;
 }
