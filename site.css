@@ -1,0 +1,790 @@
+/*
+ * Styles for every page of the Spacelab site.
+ *
+ * Shares its look with tjo.is (site.css in tusharjois.github.io), but this site is
+ * dark-only so the starfield drawn by stars.js always shows.
+ *
+ * Colors: Nord (https://www.nordtheme.com). Type: Inter (https://rsms.me/inter/).
+ */
+
+/* ---------- Tokens ---------- */
+
+:root {
+    /* Nord: Polar Night (0-3), Snow Storm (4-6), Frost (7-10), Aurora (11-15) */
+    --nord0: #2e3440;
+    --nord1: #3b4252;
+    --nord2: #434c5e;
+    --nord4: #d8dee9;
+    --nord6: #eceff4;
+    --nord7: #8fbcbb;
+    --nord8: #88c0d0;
+    --nord10: #5e81ac;
+    --nord14: #a3be8c;
+
+    --bg: var(--nord0);
+    --surface: var(--nord1);
+    --border: var(--nord2);
+    --text: var(--nord6);
+    --muted: var(--nord4);
+    --link: var(--nord8);
+    --accent: var(--nord10);
+    --header-bg: rgb(46 52 64 / 0.85);
+
+    --header-h: 3.75rem;
+    color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: InterVariable, sans-serif;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    letter-spacing: -0.022em;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 650;
+    margin: 2.75rem 0 1rem;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+h4 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+code {
+    font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.875em;
+    padding: 0.1em 0.35em;
+    border-radius: 0.25rem;
+    background: var(--surface);
+}
+
+hr {
+    margin: 2.5rem 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+[id] {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+.wrap {
+    max-width: 52.5rem;
+    margin: 0 auto;
+    padding-inline: 1.25rem;
+}
+
+/* Hidden on screen, still read by screen readers and search engines. */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.skip {
+    position: absolute;
+    left: -999px;
+}
+
+.skip:focus {
+    left: 1rem;
+    top: 0.75rem;
+    z-index: 20;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    background: var(--bg);
+}
+
+/* ---------- Starfield ---------- */
+
+/* Drawn by stars.js. Fixed behind the page, sized to the largest viewport so mobile toolbars don't stretch it. */
+.starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    height: 100lvh;
+    pointer-events: none;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--header-bg);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--border);
+}
+
+.site-header .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem 2rem;
+    min-height: var(--header-h);
+    padding-block: 0.75rem;
+}
+
+.site-name {
+    color: var(--text);
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+}
+
+/* Homepage: keep the name's space in the header without showing it. */
+.site-name.placeholder {
+    visibility: hidden;
+}
+
+/* The period in "Spacelab." */
+.dot {
+    color: var(--link);
+    font-weight: 900;
+}
+
+.site-header ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9375rem;
+}
+
+.site-header nav a {
+    color: var(--muted);
+}
+
+.site-header a:hover {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.site-header a[aria-current] {
+    color: var(--text);
+}
+
+.site-header nav a[aria-current] {
+    font-weight: 600;
+    text-decoration: underline 2px var(--link);
+    text-underline-offset: 0.45em;
+}
+
+/* ---------- Page furniture ---------- */
+
+main.wrap {
+    padding-block: 3rem 4rem;
+}
+
+.lede {
+    color: var(--muted);
+    font-size: 1.0625rem;
+}
+
+.callout {
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 0.5rem 0.5rem 0;
+    background: var(--surface);
+}
+
+.note {
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
+/* Pill-shaped links: hero links, publication links, course offerings. */
+.pills,
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pills a,
+.links a {
+    display: inline-block;
+    padding: 0.3em 0.85em;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.pills a:hover,
+.links a:hover {
+    border-color: var(--link);
+    color: var(--link);
+    text-decoration: none;
+}
+
+/* Long-form pages: /people/join/, /research/amigo/. */
+.prose li + li {
+    margin-top: 0.5rem;
+}
+
+.prose h3 {
+    margin: 2rem 0 0.5rem;
+}
+
+/* ---------- Home ---------- */
+
+/*
+ * Desktop: lab name, tagline, and links beside the lab photo, then the rest of the page, then the logo.
+ * Mobile: one column, with the photo moved down above the logo.
+ */
+.home {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 17rem;
+    grid-template-areas:
+        "hero   photo"
+        "body   body"
+        "emblem emblem";
+    gap: 2.5rem;
+}
+
+.home > .hero {
+    grid-area: hero;
+    align-self: center;
+}
+
+.home > .home-body {
+    grid-area: body;
+}
+
+.home > .photo {
+    grid-area: photo;
+}
+
+.home > .emblem {
+    grid-area: emblem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.tagline {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+    font-size: 1.125rem;
+}
+
+.tagline .org {
+    display: block;
+}
+
+.hero .pills {
+    margin-top: 1.25rem;
+}
+
+address {
+    font-style: normal;
+}
+
+.photo {
+    margin: 0;
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+}
+
+.photo figcaption {
+    margin-top: 0.6rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-style: italic;
+    text-align: center;
+}
+
+/* The rocket logo that closes the homepage. */
+.emblem {
+    justify-self: center;
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+}
+
+/* ---------- People ---------- */
+
+.people {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Photo on the left, name and details on the right, email along the bottom. */
+.person {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.85rem 1.1rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--surface);
+}
+
+.person h3,
+.person h4 {
+    margin-bottom: 0.2rem;
+    font-size: 1.0625rem;
+}
+
+.person p {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+.person .role {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.person .email {
+    grid-column: 1 / -1;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+}
+
+/* A long address breaks after "(at)" rather than mid-domain. */
+.person .email span {
+    display: inline-block;
+}
+
+.avatar {
+    display: block;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Stand-in for someone without a photo yet. */
+.avatar.initials {
+    display: grid;
+    place-items: center;
+    background: var(--border);
+    color: var(--muted);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+/* Alumni: one per row, with a bigger photo and a short list of facts. */
+.people.wide {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.wide .avatar {
+    width: 128px;
+    height: 128px;
+}
+
+.facts {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.15rem 0.75rem;
+    margin: 0.6rem 0 0;
+    font-size: 0.875rem;
+}
+
+.facts dt {
+    font-weight: 600;
+}
+
+.facts dd {
+    margin: 0;
+}
+
+/* Visitors: smaller cards, no photo. */
+.people.compact {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+
+.compact .person {
+    display: block;
+    padding: 0.75rem 1rem;
+}
+
+.compact .person h4 {
+    font-size: 0.9375rem;
+}
+
+.compact .person p {
+    font-size: 0.8125rem;
+}
+
+/* Term headings ("Summer 2025") between visitor lists. */
+h3 + .people {
+    margin-top: 0.75rem;
+}
+
+.people + h3 {
+    margin-top: 2rem;
+}
+
+/* ---------- Research ---------- */
+
+.jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9375rem;
+}
+
+/* A group of papers, with its year in a sticky left gutter. */
+.pub-group {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    column-gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.pub-group > h2 {
+    grid-column: 1;
+    grid-row: 1 / span 99;
+    align-self: start;
+    position: sticky;
+    top: calc(var(--header-h) + 1.25rem);
+    margin: 0;
+    padding-top: 0.15rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.pub-group > .pub {
+    grid-column: 2;
+}
+
+.pub {
+    margin: 0 -0.75rem 1.25rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.pub:target {
+    background: var(--surface);
+    box-shadow: inset 3px 0 var(--accent);
+}
+
+.pub h3 {
+    margin-bottom: 0.3rem;
+    font-size: 1.0625rem;
+}
+
+.pub p {
+    margin: 0;
+    font-size: 0.9375rem;
+}
+
+.pub .me {
+    text-decoration: underline 1px;
+    text-underline-offset: 0.2em;
+}
+
+.pub .venue {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.pub .links {
+    margin-top: 0.6rem;
+    gap: 0.4rem;
+}
+
+.pub .links a {
+    font-size: 0.8125rem;
+}
+
+/* Short venue name or course number, e.g. "CCS '25" or "EE 469". */
+.tag {
+    display: inline-block;
+    margin-right: 0.45em;
+    padding: 0.05em 0.5em;
+    border: 1px solid var(--border);
+    border-radius: 0.3rem;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    vertical-align: 0.1em;
+    white-space: nowrap;
+}
+
+/* "Artifact reproduced" and similar badges in a paper's link list. */
+.links a.badge {
+    border-color: var(--nord14);
+    background: rgb(163 190 140 / 0.18);
+}
+
+/* ---------- Teaching ---------- */
+
+.course {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.course h2 {
+    margin: 0 0 0.4rem;
+}
+
+.course .venue {
+    margin-bottom: 0.75rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+}
+
+.offered {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+}
+
+.offered > span {
+    color: var(--muted);
+    font-size: 0.875rem;
+}
+
+/* ---------- Project pages (/research/<project>/) ---------- */
+
+/* Project name and subtitle with its logo centered beside them. */
+.project-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-head h1 {
+    margin: 0;
+    color: var(--link);
+    font-size: 2.5rem;
+}
+
+.project-head .subtitle {
+    margin: 0.35rem 0 0;
+    color: var(--link);
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: -0.022em;
+    line-height: 1.3;
+}
+
+.project-head .logo {
+    display: block;
+    width: 112px;
+    height: 112px;
+}
+
+/* Amigo's own accent color for its title and intro. */
+.amigo {
+    --link: var(--nord7);
+}
+
+.figure {
+    display: block;
+    max-width: min(100%, 40rem);
+    height: auto;
+    margin: 2rem auto;
+    border-radius: 0.5rem;
+}
+
+.wordmark {
+    display: block;
+    width: min(50%, 18rem);
+    height: auto;
+    margin: 3rem auto 0;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 640px) {
+    .site-header {
+        position: static;
+    }
+
+    main.wrap {
+        padding-top: 2rem;
+    }
+
+    .home {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "hero"
+            "body"
+            "photo"
+            "emblem";
+        gap: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .emblem {
+        width: 88px;
+        height: 88px;
+    }
+
+    .avatar {
+        width: 72px;
+        height: 72px;
+    }
+
+    .wide .avatar {
+        width: 88px;
+        height: 88px;
+    }
+
+    .pub-group {
+        display: block;
+    }
+
+    .pub-group > h2 {
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    .project-head h1 {
+        font-size: 2rem;
+    }
+
+    .project-head .logo {
+        width: 72px;
+        height: 72px;
+    }
+}
+
+/* ---------- Print ---------- */
+
+/* Browsers drop dark backgrounds when printing, so switch to dark text on white. */
+@media print {
+    :root {
+        --bg: #fff;
+        --surface: #fff;
+        --border: #ccc;
+        --text: #000;
+        --muted: #333;
+        --link: var(--nord10);
+        color-scheme: light;
+    }
+
+    .site-header,
+    .skip,
+    .jump,
+    .starfield {
+        display: none;
+    }
+
+    .pub,
+    .person {
+        break-inside: avoid;
+    }
+}

@@ -1,74 +1,90 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>Teaching | Spacelab.</title>
-    <link rel="stylesheet" type="text/css" href="../main.css" />
-    <link rel="icon" type="image/png" href="../images/favicon.png" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teaching // Spacelab</title>
+    <meta name="description" content="Security and cryptography courses taught by the Spacelab at the City College of New York.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/site.css">
+    <script src="/stars.js" defer></script>
 </head>
 
-<script src="../stars.js"></script>
-
 <body>
-    <canvas id="starfield" width="750" height="500"></canvas>
-    <div id="content">
-        <header>
-            <nav>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="site-name" href="/">Spacelab<span class="dot">.</span></a>
+            <nav aria-label="Main">
                 <ul>
-                    <li class="menubar-leftalign">
-                        <a class="spacelab" href="../../">Spacelab<span class="slash">.</a>
-                    <li class="menubar-rightalign">
-                        <a href="../teaching/">Teaching</a>
-                    </li>
-                    <li class="menubar-rightalign">
-                        <a href="../research/">Research</a>
-                    </li>
-                    <li class="menubar-rightalign">
-                        <a href="../people/">People</a>
-                    </li>
+                    <li><a href="/people/">People</a></li>
+                    <li><a href="/research/">Research</a></li>
+                    <li><a href="/teaching/" aria-current="page">Teaching</a></li>
                 </ul>
             </nav>
-        </header>
-        <br><br>
+        </div>
+    </header>
+
+    <main id="main" class="wrap">
         <h1>Teaching</h1>
-        <h3>Practical Cybersecurity (EE 469)</h3>
-        <i>Offered: <a href="https://tjo.is/teaching/cyb-fa25/"><em>Fall 2025</em></a> (as EE 59889)</i>
-        <p class=abstract>
-            A hands-on course in cybersecurity techniques for future practitioners. Students will gain an understanding
-            of common security vulnerabilities and how to defend against them. The course emphasizes a learn-by-doing
-            approach, where students actively engage with real-world attacks and countermeasures in a controlled
-            environment. Topics covered include threat modeling, privilege escalation, software vulnerabilities, network
-            monitoring, web application exploits, and emerging threats in cybersecurity. 3 credits, undergraduate.
-        </p>
-        <h3>Secure Systems Engineering (EE I7701)</h3>
-        <i>Offered: <a href="https://tjo.is/teaching/sse-fa25/"><em>Fall 2025</em></a>, <a
-                href="https://tjo.is/teaching/sse-fa24/"><em>Fall 2024</em></a>, <a
-                href="https://tjo.is/teaching/sse-sp24/">Spring 2024</a></i>
-        <p class=abstract>
-            A first course in the design and implementation of secure and
-            private systems. Attacks against low-level programming, secure
-            software engineering practices, and the use of Rust to develop
-            secure systems. Detailed study of important secure systems such as
-            TLS, messaging, and anonymity networks. Side channels and back doors
-            in security-sensitive systems. Advanced topics and case studies in
-            secure systems engineering. The course will culminate in a final
-            project where students will engineer a secure system for a chosen
-            application. 3 credits, graduate.
-        </p>
-        <h3>Advanced Cybersecurity (EE 59803 and EE G7703)</h3>
-        <i>Offered: <em><a href="https://tjo.is/teaching/advanced-sp26/">Spring 2026</a></em></i>
-        <p class=abstract>
-            This course provides a comprehensive overview of advanced topics in
-            cybersecurity. Students will get an opportunity to engage with published research through
-            reading and discussion. The course will cover both classic papers and recent results in systems
-            security, network security, applied cryptography, and privacy. Concurrently with reading and
-            evaluating research, groups of students will work on a novel security research project on a topic
-            of their choosing. The course will culminate in a research symposium, with groups presenting
-            their research findings to the class. 3 credits, undergraduate (EE 59803) and graduate (EE G7703).
-        </p>
-    </div>
+
+        <!-- One <section class="course"> per course. Add new offerings to the front of its "Offered" list. -->
+
+        <section class="course" id="cyb">
+            <h2>Practical Cybersecurity</h2>
+            <p class="venue"><span class="tag">EE 469</span>3 credits, undergraduate</p>
+            <p>A hands-on course in cybersecurity techniques for future practitioners. Students will gain an
+                understanding of common security vulnerabilities and how to defend against them. The course emphasizes a
+                learn-by-doing approach, where students actively engage with real-world attacks and countermeasures in a
+                controlled environment. Topics covered include threat modeling, privilege escalation, software
+                vulnerabilities, network monitoring, web application exploits, and emerging threats in cybersecurity.</p>
+            <div class="offered">
+                <span>Offered</span>
+                <ul class="links">
+                    <li><a href="https://tjo.is/teaching/cyb-fa25/">Fall 2025 (as EE 59889)</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="course" id="sse">
+            <h2>Secure Systems Engineering</h2>
+            <p class="venue"><span class="tag">EE I7701</span>3 credits, graduate</p>
+            <p>A first course in the design and implementation of secure and private systems. Attacks against low-level
+                programming, secure software engineering practices, and the use of Rust to develop secure systems.
+                Detailed study of important secure systems such as TLS, messaging, and anonymity networks. Side channels
+                and back doors in security-sensitive systems. Advanced topics and case studies in secure systems
+                engineering. The course will culminate in a final project where students will engineer a secure system
+                for a chosen application.</p>
+            <div class="offered">
+                <span>Offered</span>
+                <ul class="links">
+                    <li><a href="https://tjo.is/teaching/sse-fa25/">Fall 2025</a></li>
+                    <li><a href="https://tjo.is/teaching/sse-fa24/">Fall 2024</a></li>
+                    <li><a href="https://tjo.is/teaching/sse-sp24/">Spring 2024</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="course" id="advanced">
+            <h2>Advanced Cybersecurity</h2>
+            <p class="venue"><span class="tag">EE 59803</span><span class="tag">EE G7703</span>3 credits, undergraduate
+                (EE 59803) and graduate (EE G7703)</p>
+            <p>This course provides a comprehensive overview of advanced topics in cybersecurity. Students will get an
+                opportunity to engage with published research through reading and discussion. The course will cover both
+                classic papers and recent results in systems security, network security, applied cryptography, and
+                privacy. Concurrently with reading and evaluating research, groups of students will work on a novel
+                security research project on a topic of their choosing. The course will culminate in a research
+                symposium, with groups presenting their research findings to the class.</p>
+            <div class="offered">
+                <span>Offered</span>
+                <ul class="links">
+                    <li><a href="https://tjo.is/teaching/advanced-sp26/">Spring 2026</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

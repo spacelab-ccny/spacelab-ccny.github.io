@@ -1,254 +1,198 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>People | Spacelab.</title>
-    <link rel="stylesheet" type="text/css" href="../main.css" />
-    <link rel="icon" type="image/png" href="../images/favicon.png" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>People // Spacelab</title>
+    <meta name="description" content="Faculty, staff, students, alumni, and visitors of the Spacelab at the City College of New York.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/site.css">
+    <script src="/stars.js" defer></script>
 </head>
 
-<script src="../stars.js"></script>
-
 <body>
-    <canvas id="starfield" width="750" height="500"></canvas>
-    <div id="content">
-        <header>
-            <nav>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="site-name" href="/">Spacelab<span class="dot">.</span></a>
+            <nav aria-label="Main">
                 <ul>
-                    <li class="menubar-leftalign">
-                        <a class="spacelab" href="../../">Spacelab<span class="slash">.</a>
-                    <li class="menubar-rightalign">
-                        <a href="../teaching/">Teaching</a>
-                    </li>
-                    <li class="menubar-rightalign">
-                        <a href="../research/">Research</a>
-                    </li>
-                    <li class="menubar-rightalign">
-                        <a href="../people/">People</a>
-                    </li>
+                    <li><a href="/people/" aria-current="page">People</a></li>
+                    <li><a href="/research/">Research</a></li>
+                    <li><a href="/teaching/">Teaching</a></li>
                 </ul>
             </nav>
-        </header>
-        <br><br>
+        </div>
+    </header>
+
+    <main id="main" class="wrap">
         <h1>People</h1>
-        <br>
-        <i>Interested in joining the Spacelab? Take a look at <a href="join/">this page</a>!</i>
+        <p class="callout"><i>Interested in joining the Spacelab? Take a look at <a href="/people/join/">this page</a>!</i></p>
 
-        <h2 id="pi">Primary Investigator</h2>
-        <div class="person-grid">
-            <div id="tushar" class="grid-item">
-                <img class="whoami" src="../images/tushar.jpg">
-                <div id="people">
-                    <h3>
-                        Tushar Jois
-                    </h3>
+        <!--
+            To add someone, copy an <li class="person"> block into the right list.
+            Students are alphabetical by last name. Photos live in /images/.
+        -->
 
-                    <span class="position">Assistant Professor</span>
-                    <br>
-                    City College of New York<br>
-                    📧&nbsp; <code>tjois</code> (at) <code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code>
-                    <br>
-                    🌐&nbsp; <a href="https://tjo.is/">Homepage</a>
+        <h2 id="pi">Principal Investigator</h2>
+        <ul class="people">
+            <li class="person" id="tushar">
+                <img class="avatar" src="/images/tushar.jpg" alt="Photo of Tushar Jois" width="88" height="88" loading="lazy">
+                <div>
+                    <h3><a href="https://tjo.is/">Tushar Jois</a></h3>
+                    <p class="role">Assistant Professor</p>
+                    <p>City College of New York</p>
                 </div>
-            </div>
-        </div>
+                <p class="email">📧&nbsp;<span><code>tjois</code> (at)</span> <span><code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code></span></p>
+            </li>
+        </ul>
 
-        <h2>Research Staff</h2>
-        <div class="person-grid">
-            <div id="david" class="grid-item">
-                <img class="whoami" src="../images/david.jpg">
-                <div id="people">
-                    <h3>
-                        David Inyangson
-                    </h3>
-
-                    <span class="position">Postdoctoral Associate</span>
-                    <br>
-                    City College of New York<br>
-                    📧&nbsp; <code>dinyang1</code> (at) <code>jhu</code> (dot) <code>edu</code>
-                    <br>
-                    🌐&nbsp; <a href="https://davidiny.github.io">Homepage</a>
+        <h2 id="staff">Research Staff</h2>
+        <ul class="people">
+            <li class="person" id="david">
+                <img class="avatar" src="/images/david.jpg" alt="Photo of David Inyangson" width="88" height="88" loading="lazy">
+                <div>
+                    <h3><a href="https://davidiny.github.io">David Inyangson</a></h3>
+                    <p class="role">Postdoctoral Associate</p>
+                    <p>City College of New York</p>
                 </div>
-            </div>
-        </div>
+                <p class="email">📧&nbsp;<span><code>dinyang1</code> (at)</span> <span><code>jhu</code> (dot) <code>edu</code></span></p>
+            </li>
+        </ul>
 
-        <h2>Graduate Students</h2>
-        <div class="people-grid">
-            <div id="suca" class="grid-item">
-                <img class="whoami" src="../images/suca.jpg">
-                <div id="people">
-                    <h3>
-                        Hasan Suca Kayman
-                    </h3>
-
-                    <span class="position">PhD Student</span><br>
-                    City College of New York<br>
-                    📧&nbsp; <code>hkayman</code> (at) <code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code>
-                    <br>
-                    🌐&nbsp; <a href="https://kayman.me">Homepage</a>
+        <h2 id="students">Graduate Students</h2>
+        <ul class="people">
+            <li class="person" id="leah">
+                <!-- Placeholder: swap the initials for <img class="avatar" src="/images/leah.jpg" ...> and link the name. -->
+                <span class="avatar initials" aria-hidden="true">LC</span>
+                <div>
+                    <h3>Leah Chance</h3>
+                    <p class="role">PhD Student</p>
+                    <p>City College of New York</p>
                 </div>
-            </div>
-            <div id="cora" class="grid-item">
-                <img class="whoami" src="../images/cora.jpg">
-                <div id="people">
-                    <h3>
-                        Cora Rowena Ruiz
-                    </h3>
-
-                    <span class="position">PhD Student</span><br>
-                    City College of New York<br>
-                    📧&nbsp; <code>cruiz1</code> (at) <code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code>
-                    <br>
-                    🌐&nbsp; <a href="https://crowenaruiz.com">Homepage</a>
+                <p class="email">📧&nbsp;<span><code>leah.chance49</code> (at)</span> <span><code>stu-mail</code> (dot) <code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code></span></p>
+            </li>
+            <li class="person" id="suca">
+                <img class="avatar" src="/images/suca.jpg" alt="Photo of Hasan Suca Kayman" width="88" height="88" loading="lazy">
+                <div>
+                    <h3><a href="https://kayman.me">Hasan Suca Kayman</a></h3>
+                    <p class="role">PhD Student</p>
+                    <p>City College of New York</p>
                 </div>
-            </div>
-            <div id="william" class="grid-item">
-                <img class="whoami" src="../images/william.jpg">
-                <div id="people">
-                    <h3>
-                        William Seong
-                    </h3>
-
-                    <span class="position">PhD Student</span><br>
-                    City College of New York<br>
-                    📧&nbsp; <code>wseong</code> (at) <code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code>
-                    <br>
-                    🌐&nbsp; <a href="https://williamseong.com">Homepage</a>
+                <p class="email">📧&nbsp;<span><code>hkayman</code> (at)</span> <span><code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code></span></p>
+            </li>
+            <li class="person" id="cora">
+                <img class="avatar" src="/images/cora.jpg" alt="Photo of Cora Rowena Ruiz" width="88" height="88" loading="lazy">
+                <div>
+                    <h3><a href="https://crowenaruiz.com">Cora Rowena Ruiz</a></h3>
+                    <p class="role">PhD Student</p>
+                    <p>City College of New York</p>
                 </div>
-            </div>
-        </div>
+                <p class="email">📧&nbsp;<span><code>cruiz1</code> (at)</span> <span><code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code></span></p>
+            </li>
+            <li class="person" id="william">
+                <img class="avatar" src="/images/william.jpg" alt="Photo of William Seong" width="88" height="88" loading="lazy">
+                <div>
+                    <h3><a href="https://williamseong.com">William Seong</a></h3>
+                    <p class="role">PhD Student</p>
+                    <p>City College of New York</p>
+                </div>
+                <p class="email">📧&nbsp;<span><code>wseong</code> (at)</span> <span><code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code></span></p>
+            </li>
+        </ul>
 
         <h2 id="alums">Alumni</h2>
-        <div class="person-grid">
-            <div id="alumdavid" class="grid-item">
-                <a href="../images/alums/david.jpg"> <img class="alumphoto" src="../images/alums/david.jpg"></a>
-                <div class="graduated">
-                    <h3>
-                        <a href="https://davidiny.github.io/">David Inyangson</a>
-                    </h3>
-                    <span class="position">PhD, Johns Hopkins University, 2026</span> <br>
-                    <b>Advisors:</b> <a href="https://tjo.is">Tushar Jois</a>, <a href="https://avirubin.com">Avi
-                        Rubin</a><br>
-                    <b>Thesis:</b> Decentralized by Design<br>
-                    <b>Next:</b> Postdoctoral Associate at the <a href="https://ccny.cuny.edu">City College of New
-                        York</a><br>
+        <ul class="people wide">
+            <li class="person" id="alumdavid">
+                <a href="/images/alums/david.jpg"><img class="avatar" src="/images/alums/david.jpg" alt="Graduation photo of David Inyangson" width="128" height="128" loading="lazy"></a>
+                <div>
+                    <h3><a href="https://davidiny.github.io/">David Inyangson</a></h3>
+                    <p class="role">PhD, Johns Hopkins University, 2026</p>
+                    <dl class="facts">
+                        <dt>Advisors</dt>
+                        <dd><a href="https://tjo.is">Tushar Jois</a>, <a href="https://avirubin.com">Avi Rubin</a></dd>
+                        <dt>Thesis</dt>
+                        <dd>Decentralized by Design</dd>
+                        <dt>Next</dt>
+                        <dd>Postdoctoral Associate at the <a href="https://ccny.cuny.edu">City College of New York</a></dd>
+                    </dl>
                 </div>
-            </div>
-        </div>
-        <h2>Visitors</h2>
+            </li>
+        </ul>
+
+        <h2 id="visitors">Visitors</h2>
+
         <h3 id="summer25">Summer 2025</h3>
-        <div class="visitor-grid">
-            <div id="summer25-dominick" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Dominick Gordon
-                    </b><br>
-                    <span class="position">Undergraduate Student</span><br>
-                    City College of New York<br>
-                    Cyber NYC REU Program<br>
-                </div>
-            </div>
-            <div id="summer25-suca" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Hasan Suca Kayman
-                    </b><br>
-                    <span class="position">Master's Student</span><br>
-                    City College of New York<br>
-                </div>
-            </div>
-            <div id="summer25-logan" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Logan Kostick
-                    </b><br>
-                    <span class="position">PhD Student</span><br>
-                    Johns Hopkins University<br>
-                </div>
-            </div>
-            <div id="summer25-john" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Seungho "John" Lee
-                    </b><br>
-                    <span class="position">Undergraduate Student</span><br>
-                    Princeton University<br>
-                    NSF REU Program<br>
-                </div>
-            </div>
-        </div>
+        <ul class="people compact">
+            <li class="person" id="summer25-dominick">
+                <h4>Dominick Gordon</h4>
+                <p class="role">Undergraduate Student</p>
+                <p>City College of New York</p>
+                <p>Cyber NYC REU Program</p>
+            </li>
+            <li class="person" id="summer25-suca">
+                <h4>Hasan Suca Kayman</h4>
+                <p class="role">Master's Student</p>
+                <p>City College of New York</p>
+            </li>
+            <li class="person" id="summer25-logan">
+                <h4>Logan Kostick</h4>
+                <p class="role">PhD Student</p>
+                <p>Johns Hopkins University</p>
+            </li>
+            <li class="person" id="summer25-john">
+                <h4>Seungho "John" Lee</h4>
+                <p class="role">Undergraduate Student</p>
+                <p>Princeton University</p>
+                <p>NSF REU Program</p>
+            </li>
+        </ul>
+
         <h3 id="summer24">Summer 2024</h3>
-        <div class="visitor-grid">
-            <div id="summer24-tasnim" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Tasnim Hanaif
-                    </b><br>
-                    <span class="position">Undergraduate Student</span><br>
-                    College of Staten Island<br>
-                    NSF REU Program<br>
-                </div>
-            </div>
-            <div id="summer24-kireeti" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Kireeti Kompella
-                    </b><br>
-                    <span class="position">High School Student</span><br>
-                    Interlake Senior High School<br>
-                </div>
-            </div>
-            <div id="summer24-ania" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Ania Krzyżańska
-                    </b><br>
-                    <span class="position">Undergraduate Student</span><br>
-                    Columbia University<br>
-                    Cyber NYC REU Program<br>
-                </div>
-            </div>
-            <div id="summer24-rey" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Rey Reyes
-                    </b><br>
-                    <span class="position">Undergraduate Student</span><br>
-                    Hunter College<br>
-                </div>
-            </div>
-            <div id="summer24-daniel" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        W. Daniel Sawadogo
-                    </b><br>
-                    <span class="position">Undergraduate Student</span><br>
-                    City College of New York<br>
-                    CUNY TS3 Program<br>
-                </div>
-            </div>
-            <div id="summer24-ana" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Ana Stanisavljevic
-                    </b><br>
-                    <span class="position">Undergraduate Student</span><br>
-                    Duke University<br>
-                    NSF REU Program<br>
-                </div>
-            </div>
-            <div id="summer24-hayder" class="grid-item">
-                <div class="graduated">
-                    <b>
-                        Hayder Timrazi
-                    </b><br>
-                    <span class="position">Master's Student</span><br>
-                    City College of New York<br>
-                </div>
-            </div>
-        </div>
+        <ul class="people compact">
+            <li class="person" id="summer24-tasnim">
+                <h4>Tasnim Hanaif</h4>
+                <p class="role">Undergraduate Student</p>
+                <p>College of Staten Island</p>
+                <p>NSF REU Program</p>
+            </li>
+            <li class="person" id="summer24-kireeti">
+                <h4>Kireeti Kompella</h4>
+                <p class="role">High School Student</p>
+                <p>Interlake Senior High School</p>
+            </li>
+            <li class="person" id="summer24-ania">
+                <h4>Ania Krzyżańska</h4>
+                <p class="role">Undergraduate Student</p>
+                <p>Columbia University</p>
+                <p>Cyber NYC REU Program</p>
+            </li>
+            <li class="person" id="summer24-rey">
+                <h4>Rey Reyes</h4>
+                <p class="role">Undergraduate Student</p>
+                <p>Hunter College</p>
+            </li>
+            <li class="person" id="summer24-daniel">
+                <h4>W. Daniel Sawadogo</h4>
+                <p class="role">Undergraduate Student</p>
+                <p>City College of New York</p>
+                <p>CUNY TS3 Program</p>
+            </li>
+            <li class="person" id="summer24-ana">
+                <h4>Ana Stanisavljevic</h4>
+                <p class="role">Undergraduate Student</p>
+                <p>Duke University</p>
+                <p>NSF REU Program</p>
+            </li>
+            <li class="person" id="summer24-hayder">
+                <h4>Hayder Timrazi</h4>
+                <p class="role">Master's Student</p>
+                <p>City College of New York</p>
+            </li>
+        </ul>
+    </main>
 </body>
 
 </html>

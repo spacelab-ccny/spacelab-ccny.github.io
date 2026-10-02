@@ -1,69 +1,76 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>Spacelab.</title>
-    <link rel="stylesheet" href="main.css" />
-    <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spacelab</title>
+    <meta name="description" content="The Spacelab is the Security, Privacy, and Cryptographic Engineering Lab at the City College of New York, led by Prof. Tushar Jois.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Spacelab">
+    <meta property="og:description" content="The Security, Privacy, and Cryptographic Engineering Lab at the City College of New York.">
+    <meta property="og:url" content="https://spacelab-ccny.github.io/">
+    <meta property="og:image" content="https://spacelab-ccny.github.io/images/logo.png">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/site.css">
+    <script src="/stars.js" defer></script>
 </head>
 
-<script src="stars.js"></script>
-
 <body>
-    <canvas id="starfield" width="750" height="500"></canvas>
-    <div id="content">
-        <header>
-            <nav>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="wrap">
+            <!-- Invisible placeholder so the header matches other pages; the name shows in the hero below. -->
+            <span class="site-name placeholder" aria-hidden="true">Spacelab<span class="dot">.</span></span>
+            <nav aria-label="Main">
                 <ul>
-                    <li class="menubar-rightalign">
-                        <a href="./teaching">Teaching</a>
-                    </li>
-                    <li class="menubar-rightalign">
-                        <a href="./research">Research</a>
-                    </li>
-                    <li class="menubar-rightalign">
-                        <a href="./people">People</a>
-                    </li>
+                    <li><a href="/people/">People</a></li>
+                    <li><a href="/research/">Research</a></li>
+                    <li><a href="/teaching/">Teaching</a></li>
                 </ul>
             </nav>
-        </header>
-        <br>
-        <h1 id="spacelab-lab-name">Spacelab<span class="slash">.</span></h1>
-        <img class="logo" src="images/logo.png" />
-        <p>
-            We are the Security, Privacy, and Cryptographic Engineering Lab, a research
-            group at the <a href="https://www.ccny.cuny.edu">City College of New
-                York</a>. The members of the Spacelab are involved in the research and teaching of systems, network,
-            and embedded security, privacy
-            and censorship resistance, practical cryptography, and other related
-            areas. The Spacelab is captained by <a href="https://tjo.is">Prof. Tushar Jois</a>.
-        </p>
+        </div>
+    </header>
 
-        <p><i>Interested in joining the Spacelab? Take a look at <a href="people/join/">this page</a>!</i>
-        </p>
+    <!-- The lab photo sits beside the hero on desktop and moves to the bottom on mobile (see .home in site.css). -->
+    <main id="main" class="wrap home">
+        <section class="hero">
+            <h1>Spacelab<span class="dot">.</span></h1>
+            <p class="tagline">Security, Privacy, and Cryptographic Engineering <span class="org">The City College of New York</span></p>
+            <ul class="pills">
+                <li><a href="/people/join/">Join us</a></li>
+                <li><a href="https://github.com/spacelab-ccny">GitHub</a></li>
+            </ul>
+        </section>
 
-        <h2 id="contact">Contact Information</h2>
-        <b>Spacelab: Security, Privacy, and Cryptographic Engineering</b>
-        <br>
-        <i>City College of New York</i>
-        <br>
-        📫&nbsp; 160 Convent Avenue
-        <br>
-        Steinman Hall 638
-        <br>
-        New York, NY 10031
-        <br>
-        <br>
-        <br>
-        <!-- 📧&nbsp; <code>spacelab</code> (at) <code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code> -->
+        <div class="home-body">
+            <p>We are the Security, Privacy, and Cryptographic Engineering Lab, a research group at the
+                <a href="https://www.ccny.cuny.edu">City College of New York</a>. The members of the Spacelab are involved
+                in the research and teaching of systems, network, and embedded security, privacy and censorship resistance,
+                practical cryptography, and other related areas. The Spacelab is captained by
+                <a href="https://tjo.is">Prof. Tushar Jois</a>.</p>
 
-        <img class="center" src="../images/lab.jpg">
-        <p style="text-align:center"><i>Spacelab at the 2026 U.S. Open</i></p>
+            <p class="callout"><i>Interested in joining the Spacelab? Take a look at <a href="/people/join/">this page</a>!</i></p>
 
+            <h2 id="contact">Contact</h2>
+            <address>
+                <b>Spacelab: Security, Privacy, and Cryptographic Engineering</b><br>
+                City College of New York<br>
+                160 Convent Avenue<br>
+                Steinman Hall 638<br>
+                New York, NY 10031
+            </address>
+            <!-- 📧&nbsp; <code>spacelab</code> (at) <code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code> -->
+        </div>
 
-    </div>
+        <figure class="photo">
+            <img src="/images/lab-web.jpg" alt="Spacelab members at the 2026 U.S. Open" width="1200" height="1392">
+            <figcaption>Spacelab at the 2026 U.S. Open</figcaption>
+        </figure>
+
+        <img class="emblem" src="/images/logo.png" alt="Spacelab logo: a rocket launching" width="112" height="112" loading="lazy">
+    </main>
 </body>
 
 </html>
