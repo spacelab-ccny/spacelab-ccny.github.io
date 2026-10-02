@@ -33,13 +33,17 @@
         </div>
     </header>
 
-    <!-- The lab photo sits beside the hero on desktop and moves to the bottom on mobile (see .home in site.css). -->
+    <!-- The lab photo comes first so the name, tagline, and intro can wrap around it on desktop; on mobile it moves to the bottom (see .home in site.css). -->
     <main id="main" class="wrap home">
+        <figure class="photo">
+            <img src="/images/lab-web.jpg" alt="Spacelab members at the 2026 U.S. Open" width="1200" height="1392">
+            <figcaption>Spacelab at the 2026 U.S. Open</figcaption>
+        </figure>
+
         <section class="hero">
             <h1>Spacelab<span class="dot">.</span></h1>
             <p class="tagline">Security, Privacy, and Cryptographic Engineering <span class="org">The City College of New York</span></p>
             <ul class="pills">
-                <li><a href="/people/join/">Join us</a></li>
                 <li><a href="https://github.com/spacelab-ccny">GitHub</a></li>
             </ul>
         </section>
@@ -63,11 +67,6 @@
             </address>
             <!-- 📧&nbsp; <code>spacelab</code> (at) <code>ccny</code> (dot) <code>cuny</code> (dot) <code>edu</code> -->
         </div>
-
-        <figure class="photo">
-            <img src="/images/lab-web.jpg" alt="Spacelab members at the 2026 U.S. Open" width="1200" height="1392">
-            <figcaption>Spacelab at the 2026 U.S. Open</figcaption>
-        </figure>
 
         <img class="emblem" src="/images/logo.png" alt="Spacelab logo: a rocket launching" width="112" height="112" loading="lazy">
     </main>

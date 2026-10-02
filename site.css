@@ -312,34 +312,22 @@ main.wrap {
 /* ---------- Home ---------- */
 
 /*
- * Desktop: lab name, tagline, and links beside the lab photo, then the rest of the page, then the logo.
- * Mobile: one column, with the photo moved down above the logo.
+ * Desktop: the lab photo floats right, so the name, tagline, links, and intro paragraph wrap around it.
+ * Mobile: one column, with the photo moved down above the logo (see the small-screens block).
  */
-.home {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 17rem;
-    grid-template-areas:
-        "hero   photo"
-        "body   body"
-        "emblem emblem";
-    gap: 2.5rem;
+.home > .photo {
+    float: right;
+    width: 17rem;
+    margin: 0 0 1.5rem 2.5rem;
 }
 
 .home > .hero {
-    grid-area: hero;
-    align-self: center;
+    margin-bottom: 2.5rem;
 }
 
-.home > .home-body {
-    grid-area: body;
-}
-
-.home > .photo {
-    grid-area: photo;
-}
-
-.home > .emblem {
-    grid-area: emblem;
+/* Everything after the intro paragraph starts below the photo. */
+.home .callout {
+    clear: right;
 }
 
 .hero h1 {
@@ -386,7 +374,9 @@ address {
 
 /* The rocket logo that closes the homepage. */
 .emblem {
-    justify-self: center;
+    display: block;
+    clear: both;
+    margin: 3rem auto 0;
     width: 112px;
     height: 112px;
     border-radius: 50%;
@@ -575,7 +565,8 @@ h3 + .people {
     font-size: 0.9375rem;
 }
 
-.pub .me {
+/* Past and present lab members in a paper's author list. */
+.pub .member {
     text-decoration: underline 1px;
     text-underline-offset: 0.2em;
 }
@@ -711,6 +702,7 @@ h3 + .people {
     }
 
     .home {
+        display: grid;
         grid-template-columns: minmax(0, 1fr);
         grid-template-areas:
             "hero"
@@ -718,6 +710,27 @@ h3 + .people {
             "photo"
             "emblem";
         gap: 2rem;
+    }
+
+    .home > .hero {
+        grid-area: hero;
+        margin: 0;
+    }
+
+    .home > .home-body {
+        grid-area: body;
+    }
+
+    .home > .photo {
+        grid-area: photo;
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    .home > .emblem {
+        grid-area: emblem;
+        margin: 0 auto;
     }
 
     .hero h1 {
