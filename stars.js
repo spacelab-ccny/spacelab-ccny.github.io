@@ -54,15 +54,16 @@
         }
     }
 
-    var queued = false;
-    window.addEventListener('resize', function () {
-        if (queued) return;
-        queued = true;
-        requestAnimationFrame(function () {
-            queued = false;
-            draw();
-        });
-    });
+    // Redraw whenever the canvas changes size on screen, which can happen without a window resize
+    // (a scrollbar appearing, the viewport settling on first load). The first callback is the initial draw, before first paint.
+    new ResizeObserver(draw).observe(canvas);
 
-    draw();
+    // The pixel ratio can change without the canvas resizing (e.g. moving the window to another display).
+    function watchPixelRatio() {
+        matchMedia('(resolution: ' + window.devicePixelRatio + 'dppx)').addEventListener('change', function () {
+            draw();
+            watchPixelRatio();
+        }, { once: true });
+    }
+    watchPixelRatio();
 })();
